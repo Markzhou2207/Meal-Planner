@@ -1,6 +1,6 @@
 import ListGroup from 'react-bootstrap/ListGroup' 
 import Table from 'react-bootstrap/Table'
-const RecipeList = ({recipes}) => {
+const RecipeList = ({recipes,editRecipe}) => {
     return (
         <>
             {/* <ListGroup>
@@ -27,7 +27,7 @@ const RecipeList = ({recipes}) => {
             <tbody>
                 {recipes.map((recipe)=>(
                    <tr>
-                       <th>{recipe.name}</th>
+                       <th onClick={()=>editRecipe(recipe)}>{recipe.name}</th>
                        <th>{recipe.difficulty}</th>
                        <th>{recipe.preparationTime} </th>
                        <th>{recipe.energy} </th>

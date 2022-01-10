@@ -18,27 +18,6 @@ const Navigation = ({title}) => {
               </Nav>
             </Container>
           </Navbar>
-        // <nav className="navbar navbar-expand-lg navbar-light bg-white">
-        //   <div className="container-fluid">
-
-        //   <div className="collapse navbar-collapse" id="navbarSupportedContent">
-        //       <ul className="navbar-nav ml-auto">
-        //         <li className="nav-item">
-        //           <NavLink className="nav-link active" to='/about'>About me</NavLink>
-        //         </li>
-        //           <li className="nav-item">
-        //             <NavLink className="nav-link" to='/thoughts'>Thoughts</NavLink>
-        //           </li>
-        //           <li className="nav-item">
-        //             <NavLink className="nav-link" to='/portfolio'>Portfolio</NavLink>
-        //           </li>
-        //           <li className="nav-item">
-        //             <NavLink className="nav-link" to='/contacts'>Contacts</NavLink>
-        //           </li>
-        //       </ul>
-        //     </div>
-        //   </div>
-        //   </nav>
     )
 }
 

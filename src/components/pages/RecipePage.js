@@ -9,7 +9,7 @@ function RecipePage() {
     const openModal = () =>{
         setShowModal(prev=>!prev)
     }
-    const[recipesPerPage] = useState(5)
+    const[recipesPerPage] = useState(10)
     const[currentPage, setCurrentPage] = useState(1)
 
 
@@ -159,6 +159,7 @@ function RecipePage() {
         },
     ])
 
+
     
     //Variables needed for pagination
     const indexOfLastRecipe = currentPage * recipesPerPage;
@@ -168,14 +169,26 @@ function RecipePage() {
     //Change recipes displayed
     const paginate = (pageNumber) => setCurrentPage(pageNumber)
 
+    //
+    const[activeRecipe,setActiveRecipe] = useState('')
+    //Adds/Edits Recipe
+    const addRecipe = (recipe) =>{
+        const id = recipes.length+1
+        const newRecipe={id,...recipe}
+        recipes.push(newRecipe)
+    }
+    const editRecipe = (recipe) =>{
+        setActiveRecipe(recipe)
+        setShowModal(prev=> !prev)
+    }
     return (
         <>
             <Container>
             <div>
                 <h1 style={{display:'inline-block'}}>Recipes</h1>
                 <Button onClick={openModal} style={{display:'inline-block',float:'right',top:'50%'}} variant='primary'>Create New</Button>{' '}
-                <RecipeModal showModal={showModal} setShowModal={setShowModal}/>
-                <RecipeList recipes={currentRecipes}/>
+                <RecipeModal showModal={showModal} setShowModal={setShowModal} onAdd={addRecipe} recipe={activeRecipe}/>
+                <RecipeList recipes={currentRecipes} editRecipe={editRecipe}/>
                 <PaginationBar recipesPerPage={recipesPerPage} totalRecipes={recipes.length} paginate={paginate}></PaginationBar>
             </div>
             </Container>
