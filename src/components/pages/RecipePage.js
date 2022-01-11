@@ -1,7 +1,7 @@
 import Container from "react-bootstrap/esm/Container";
 import Button from 'react-bootstrap/Button';
 import RecipeModal from "../RecipeModal";
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import RecipeList from "../RecipeList";
 import PaginationBar from "../PaginationBar";
 function RecipePage() {
@@ -12,152 +12,22 @@ function RecipePage() {
     const[recipesPerPage] = useState(10)
     const[currentPage, setCurrentPage] = useState(1)
 
+    useEffect(()=>{
+        const getRecipes = async()=>{
+            const recipesFromServer = await fetchRecipes()
+            setRecipes(recipesFromServer)
+        }
 
-    const[recipes, setRecipes]=useState([
-        {
-            id:1,
-            name:'Chicken Curry',
-            ingredients:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc aliquam lorem in sodales cursus. Vivamus non quam vitae ipsum lacinia volutpat. Cras nec placerat ante. Nullam vitae leo ultrices, auctor sem ut, ullamcorper nunc. Mauris in massa orci. Suspendisse potenti. Vivamus fermentum augue vel eros tempor, vitae pulvinar dolor sagittis.",
-            steps:"1. Boil Chick, 2. Brown Beef",
-            energy:'2899',
-            fat:'28.5',
-            carbohydrates:'41.3',
-            protein:'12',
-            sodium:'1226',
-            preparationTime:'15',
-            difficulty:'Easy'
-        },
-        {
-            id:2,
-            name:'Chicken Stew',
-            ingredients:"3 Onions",
-            steps:"1. Boil Chick, 2. Brown Beef",
-            energy:'2899',
-            fat:'28.5',
-            carbohydrates:'41.3',
-            protein:'12',
-            sodium:'1226',
-            preparationTime:'15',
-            difficulty:'Easy'
-        },
-        {
-            id:3,
-            name:'Pizza',
-            ingredients:"3 Onions",
-            steps:"1. Boil Chick, 2. Brown Beef",
-            energy:'2899',
-            fat:'28.5',
-            carbohydrates:'41.3',
-            protein:'12',
-            sodium:'1226',
-            preparationTime:'15',
-            difficulty:'Easy'
-        },
-        {
-            id:4,
-            name:'Chicken Pasta',
-            ingredients:"3 Onions",
-            steps:"1. Boil Chick, 2. Brown Beef",
-            energy:'2899',
-            fat:'28.5',
-            carbohydrates:'41.3',
-            protein:'12',
-            sodium:'1226',
-            preparationTime:'15',
-            difficulty:'Easy'
-        },
-        {
-            id:5,
-            name:'Beef Stew',
-            ingredients:"3 Onions",
-            steps:"1. Boil Chick, 2. Brown Beef",
-            energy:'2899',
-            fat:'28.5',
-            carbohydrates:'41.3',
-            protein:'12',
-            sodium:'1226',
-            preparationTime:'15',
-            difficulty:'Easy'
-        },
-        {
-            id:6,
-            name:'Turkey Sandwich',
-            ingredients:"3 Onions",
-            steps:"1. Boil Chick, 2. Brown Beef",
-            energy:'2899',
-            fat:'28.5',
-            carbohydrates:'41.3',
-            protein:'12',
-            sodium:'1226',
-            preparationTime:'15',
-            difficulty:'Easy'
-        },
-        {
-            id:7,
-            name:'Hot Pot',
-            ingredients:"3 Onions",
-            steps:"1. Boil Chick, 2. Brown Beef",
-            energy:'2899',
-            fat:'28.5',
-            carbohydrates:'41.3',
-            protein:'12',
-            sodium:'1226',
-            preparationTime:'15',
-            difficulty:'Easy'
-        },
-        {
-            id:8,
-            name:'Roast Lamb',
-            ingredients:"3 Onions",
-            steps:"1. Boil Chick, 2. Brown Beef",
-            energy:'2899',
-            fat:'28.5',
-            carbohydrates:'41.3',
-            protein:'12',
-            sodium:'1226',
-            preparationTime:'15',
-            difficulty:'Easy'
-        },
-        {
-            id:9,
-            name:'Chicken Wrap',
-            ingredients:"3 Onions",
-            steps:"1. Boil Chick, 2. Brown Beef",
-            energy:'2899',
-            fat:'28.5',
-            carbohydrates:'41.3',
-            protein:'12',
-            sodium:'1226',
-            preparationTime:'15',
-            difficulty:'Easy'
-        },
-        {
-            id:10,
-            name:'Lentil Stew',
-            ingredients:"3 Onions",
-            steps:"1. Boil Chick, 2. Brown Beef",
-            energy:'2899',
-            fat:'28.5',
-            carbohydrates:'41.3',
-            protein:'12',
-            sodium:'1226',
-            preparationTime:'15',
-            difficulty:'Easy'
-        },
-        {
-            id:11,
-            name:'Fried Chicken',
-            ingredients:"3 Onions",
-            steps:"1. Boil Chick, 2. Brown Beef",
-            energy:'2899',
-            fat:'28.5',
-            carbohydrates:'41.3',
-            protein:'12',
-            sodium:'1226',
-            preparationTime:'15',
-            difficulty:'Easy'
-        },
-    ])
+        getRecipes()
+    },[])
+
+    // Fetches recipes from JSON
+    const fetchRecipes= async()=>{
+        const res = await fetch('http://localhost:5000/recipes')
+        const data = await res.json()
+        return data
+    }
+    const[recipes, setRecipes]=useState([])
 
 
     
@@ -172,14 +42,46 @@ function RecipePage() {
     //
     const[activeRecipe,setActiveRecipe] = useState('')
     //Adds/Edits Recipe
-    const addRecipe = (recipe) =>{
-        const id = recipes.length+1
-        const newRecipe={id,...recipe}
-        recipes.push(newRecipe)
+    const addRecipe = async(recipe) =>{
+        // const id = recipes.length+1
+        // const newRecipe={id,...recipe}
+        // recipes.push(newRecipe)
+        const res = await fetch('http://localhost:5000/recipes',{
+            method:'POST',
+            headers:{
+                'Content-type':'application/json'
+            },
+            body: JSON.stringify(recipe)
+        })
+
+        const data = await res.json()
+
+        setRecipes([...recipes,data])
+
     }
-    const editRecipe = (recipe) =>{
-        setActiveRecipe(recipe)
-        setShowModal(prev=> !prev)
+
+    //Delete Recipe
+    const deleteRecipe= async(id)=>{
+        await fetch('http://localhost:5000/recipes/${id}',{
+            method:'DELETE',
+        })
+    }
+
+    //
+    const editRecipe = async(recipe) =>{
+        
+        const res = await fetch('http://localhost:5000/recipes/${recipe[id]}',{
+            method:'PUT',
+            headers:{
+                'Content-type':'application/json'
+            },
+            body: JSON.stringify(recipe)
+        })
+
+        const data = await res.json()
+
+        setRecipes([...recipes,data])
+
     }
     return (
         <>
