@@ -20,9 +20,6 @@ const RecipeModal=({showModal, setShowModal,onAdd,recipe}) =>{
     const[carbs,setCarbs]=useState('0')
     const[difficulty,setDifficulty]=useState('')
     console.log(recipe.name)
-    if(recipe!==null){
-      setName(recipe.name)
-    }
     const onSubmit=(e)=>{
       console.log("Submitting")
       e.preventDefault()
