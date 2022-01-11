@@ -29,7 +29,7 @@ const RecipeList = ({recipes,editRecipe}) => {
                    <tr>
                        <th onClick={()=>editRecipe(recipe)}>{recipe.name}</th>
                        <th>{recipe.difficulty}</th>
-                       <th>{recipe.preparationTime} </th>
+                       <th>{recipe.time} </th>
                        <th>{recipe.energy} </th>
                    </tr>
                     

@@ -12,8 +12,8 @@ function RecipePage() {
     const[recipesPerPage] = useState(10)
     const[currentPage, setCurrentPage] = useState(1)
 
-
-    const[recipes, setRecipes]=useState([
+    //let recipes=[
+    const[recipes,setRecipes]=useState([
         {
             id:1,
             name:'Chicken Curry',
@@ -24,7 +24,7 @@ function RecipePage() {
             carbohydrates:'41.3',
             protein:'12',
             sodium:'1226',
-            preparationTime:'15',
+            time:'15',
             difficulty:'Easy'
         },
         {
@@ -37,7 +37,7 @@ function RecipePage() {
             carbohydrates:'41.3',
             protein:'12',
             sodium:'1226',
-            preparationTime:'15',
+            time:'15',
             difficulty:'Easy'
         },
         {
@@ -50,7 +50,7 @@ function RecipePage() {
             carbohydrates:'41.3',
             protein:'12',
             sodium:'1226',
-            preparationTime:'15',
+            time:'15',
             difficulty:'Easy'
         },
         {
@@ -63,7 +63,7 @@ function RecipePage() {
             carbohydrates:'41.3',
             protein:'12',
             sodium:'1226',
-            preparationTime:'15',
+            time:'15',
             difficulty:'Easy'
         },
         {
@@ -76,7 +76,7 @@ function RecipePage() {
             carbohydrates:'41.3',
             protein:'12',
             sodium:'1226',
-            preparationTime:'15',
+            time:'15',
             difficulty:'Easy'
         },
         {
@@ -89,7 +89,7 @@ function RecipePage() {
             carbohydrates:'41.3',
             protein:'12',
             sodium:'1226',
-            preparationTime:'15',
+            time:'15',
             difficulty:'Easy'
         },
         {
@@ -102,7 +102,7 @@ function RecipePage() {
             carbohydrates:'41.3',
             protein:'12',
             sodium:'1226',
-            preparationTime:'15',
+            time:'15',
             difficulty:'Easy'
         },
         {
@@ -115,7 +115,7 @@ function RecipePage() {
             carbohydrates:'41.3',
             protein:'12',
             sodium:'1226',
-            preparationTime:'15',
+            time:'15',
             difficulty:'Easy'
         },
         {
@@ -128,7 +128,7 @@ function RecipePage() {
             carbohydrates:'41.3',
             protein:'12',
             sodium:'1226',
-            preparationTime:'15',
+            time:'15',
             difficulty:'Easy'
         },
         {
@@ -141,7 +141,7 @@ function RecipePage() {
             carbohydrates:'41.3',
             protein:'12',
             sodium:'1226',
-            preparationTime:'15',
+            time:'15',
             difficulty:'Easy'
         },
         {
@@ -154,7 +154,20 @@ function RecipePage() {
             carbohydrates:'41.3',
             protein:'12',
             sodium:'1226',
-            preparationTime:'15',
+            time:'15',
+            difficulty:'Easy'
+        },
+        {
+            id:12,
+            name:'Hamburger',
+            ingredients:"3 Onions",
+            steps:"1. Boil Chick, 2. Brown Beef",
+            energy:'2899',
+            fat:'28.5',
+            carbohydrates:'41.3',
+            protein:'12',
+            sodium:'1226',
+            time:'15',
             difficulty:'Easy'
         },
     ])
@@ -173,10 +186,31 @@ function RecipePage() {
     const[activeRecipe,setActiveRecipe] = useState('')
     //Adds/Edits Recipe
     const addRecipe = (recipe) =>{
-        const id = recipes.length+1
-        const newRecipe={id,...recipe}
-        recipes.push(newRecipe)
+        // if(recipe['id']!==0){
+        //     for(var i=0;i<recipes.length;i++){
+        //         if(recipes[i]['id']===recipe['id']){
+        //             console.log('Recipes id is '+recipes[i]['id']+'  New Recipe id is '+recipe['id'])
+        //             console.log(recipes[i])
+        //             console.log(recipe)
+        //             //setRecipes(currentRecipes=>currentRecipes[i]=recipe);
+        //             //recipes.splice(i,0,recipe)
+        //             break;
+        //         }
+        //     }
+        // } else {
+            const id = recipes[recipes.length-1].id+1
+            console.log('Submitted recipe '+recipe[0])
+            console.log(recipe)
+            console.log(recipe.name)
+            const newRecipe={id,...recipe}
+            recipes.push(newRecipe)
+
+        //}
+        console.log(recipes)
+        setActiveRecipe('')
     }
+
+
     const editRecipe = (recipe) =>{
         setActiveRecipe(recipe)
         setShowModal(prev=> !prev)

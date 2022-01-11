@@ -4,12 +4,11 @@ import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 import FloatingLabel from 'react-bootstrap/FloatingLabel'
 import { useState,setState } from 'react'
-import DropdownButton from 'react-bootstrap/DropdownButton'
-import Dropdown from 'react-bootstrap/Dropdown'
+import RecipeList from './RecipeList'
 
 const RecipeModal=({showModal, setShowModal,onAdd,recipe}) =>{
-
-    const[name,setName]=useState('')
+    const[id, setId] = useState(0);
+    const[name, setName] = useState('');
     const[ingredients,setIngredients]=useState('')
     const[steps,setSteps]=useState('')
     const[energy,setEnergy]=useState('0')
@@ -19,22 +18,54 @@ const RecipeModal=({showModal, setShowModal,onAdd,recipe}) =>{
     const[sodium,setSodium]=useState('0')
     const[carbs,setCarbs]=useState('0')
     const[difficulty,setDifficulty]=useState('')
-    console.log(recipe.name)
-    if(recipe!==null){
-      setName(recipe.name)
-    }
+    /*
+      Returns the submitted form information to the onAdd method
+      Resets form information after submission.
+    */
     const onSubmit=(e)=>{
-      console.log("Submitting")
       e.preventDefault()
-      onAdd({name,ingredients,steps,energy,fat,carbs,protein,sodium,time,difficulty})
+      onAdd({id,name,ingredients,steps,energy,fat,carbs,protein,sodium,time,difficulty})
       setShowModal(prev=> !prev)
+      setName('')
+      setIngredients('')
+      setSteps('')
+      setEnergy('0')
+      setTime('0')
+      setFat('0')
+      setProtein('0')
+      setSodium('0')
+      setCarbs('0')
+      setDifficulty('0')
     }
+
     // Styling for the information fields in the menu (Energy,Time,Fat,Protein,Sodium,Carbs)
     const infoStyling={
       width:"49%",
       display:"inline-block",
       margin:"1px"
     }
+
+    React.useEffect(()=>{
+      if (recipe.name!==undefined) {  
+         setId(recipe.id)
+         setName(recipe.name)
+         setIngredients(recipe.ingredients)
+         setSteps(recipe.steps)
+         setEnergy(recipe.energy)
+         setTime(recipe.time)
+         setFat(recipe.fat)
+         setProtein(recipe.protein)
+         setSodium(recipe.sodium)
+         setCarbs(recipe.carbohydrates)
+         setDifficulty(recipe.difficulty)
+        
+      }
+    },[recipe]) 
+
+
+
+
+
     return (
         <>
             {showModal ? (
