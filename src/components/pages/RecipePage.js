@@ -11,7 +11,8 @@ function RecipePage() {
     }
     const[recipesPerPage] = useState(10)
     const[currentPage, setCurrentPage] = useState(1)
-
+    const[recipes, setRecipes]=useState([])
+    
     useEffect(()=>{
         const getRecipes = async()=>{
             const recipesFromServer = await fetchRecipes()
@@ -19,7 +20,7 @@ function RecipePage() {
         }
 
         getRecipes()
-    },[])
+    },[recipes])
 
     // Fetches recipes from JSON
     const fetchRecipes= async()=>{
@@ -27,10 +28,9 @@ function RecipePage() {
         const data = await res.json()
         return data
     }
-    const[recipes, setRecipes]=useState([])
 
 
-    
+
     //Variables needed for pagination
     const indexOfLastRecipe = currentPage * recipesPerPage;
     const indexOfFirstRecipe = indexOfLastRecipe - recipesPerPage;
@@ -41,11 +41,9 @@ function RecipePage() {
 
     //
     const[activeRecipe,setActiveRecipe] = useState('')
+
     //Adds/Edits Recipe
     const addRecipe = async(recipe) =>{
-        // const id = recipes.length+1
-        // const newRecipe={id,...recipe}
-        // recipes.push(newRecipe)
         const res = await fetch('http://localhost:5000/recipes',{
             method:'POST',
             headers:{
@@ -68,9 +66,15 @@ function RecipePage() {
     }
 
     //
+    const openRecipeModal = (recipe) =>{
+        setActiveRecipe(recipe)
+        setShowModal(prev=> !prev)
+    }
+    //
     const editRecipe = async(recipe) =>{
-        
-        const res = await fetch('http://localhost:5000/recipes/${recipe[id]}',{
+        const id=recipe['id']
+        console.log(`http://localhost:5000/recipes/${id}`)
+        const res = await fetch(`http://localhost:5000/recipes/${id}`,{
             method:'PUT',
             headers:{
                 'Content-type':'application/json'
@@ -89,14 +93,13 @@ function RecipePage() {
             <div>
                 <h1 style={{display:'inline-block'}}>Recipes</h1>
                 <Button onClick={openModal} style={{display:'inline-block',float:'right',top:'50%'}} variant='primary'>Create New</Button>{' '}
-                <RecipeModal showModal={showModal} setShowModal={setShowModal} onAdd={addRecipe} recipe={activeRecipe}/>
-                <RecipeList recipes={currentRecipes} editRecipe={editRecipe}/>
+                <RecipeModal showModal={showModal} setShowModal={setShowModal} onAdd={addRecipe} onEdit={editRecipe}activeRecipe={activeRecipe}/>
+                <RecipeList recipes={currentRecipes} openRecipeModal={openRecipeModal}/>
                 <PaginationBar recipesPerPage={recipesPerPage} totalRecipes={recipes.length} paginate={paginate}></PaginationBar>
             </div>
             </Container>
         </>
     );
   }
-  
+
   export default RecipePage;
-  
