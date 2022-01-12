@@ -131,16 +131,26 @@
     },
     {
       "id": 12,
-      "name": "test",
+      "name": "Chicken Nuggets",
       "ingredients": "test",
       "steps": "test",
       "energy": "0",
       "fat": "0",
-      "carbs": "0",
       "protein": "0",
       "sodium": "0",
       "time": "0",
       "difficulty": "test"
+    }
+  ],
+  "plans": [
+    {
+      "id": 0,
+      "startDate": "",
+      "monday": "Chick",
+      "tuesday": 2,
+      "wednesday": 3,
+      "thursday": 4,
+      "friday": 5
     }
   ]
 }

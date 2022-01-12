@@ -6,6 +6,7 @@ import {
 } from "react-router-dom";
 import Home from './components/pages/Home.js'
 import RecipePage from './components/pages/RecipePage';
+import SchedulePage from './components/pages/SchedulePage'
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           </Routes>
         </Router>
         <RecipePage></RecipePage>
+        <SchedulePage></SchedulePage>
     </div>
   );
 }

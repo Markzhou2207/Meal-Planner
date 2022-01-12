@@ -16,19 +16,13 @@ function RecipePage() {
     //refreshes with refreshRecipe value changes
     useEffect(()=>{
         const getRecipes = async()=>{
-            const recipesFromServer = await fetchRecipes()
-            setRecipes(recipesFromServer)
+            const res = await fetch('http://localhost:5000/recipes')
+            const data = await res.json()
+            setRecipes(data)
         }
 
         getRecipes()
     },[refreshRecipes])
-
-    // Fetches recipes from JSON
-    const fetchRecipes= async()=>{
-        const res = await fetch('http://localhost:5000/recipes')
-        const data = await res.json()
-        return data
-    }
 
 
 
