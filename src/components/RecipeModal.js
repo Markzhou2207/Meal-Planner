@@ -6,7 +6,7 @@ import FloatingLabel from 'react-bootstrap/FloatingLabel'
 import { useState,setState } from 'react'
 import RecipeList from './RecipeList'
 
-const RecipeModal=({showModal, setShowModal,onAdd,onEdit,activeRecipe}) =>{
+const RecipeModal=({showModal, setShowModal,addRecipe,editRecipe,deleteRecipe,activeRecipe,setActiveRecipe}) =>{
     const[id, setId] = useState(0);
     const[name, setName] = useState('');
     const[ingredients,setIngredients]=useState('')
@@ -24,12 +24,22 @@ const RecipeModal=({showModal, setShowModal,onAdd,onEdit,activeRecipe}) =>{
     */
     const onSubmit=(e)=>{
       e.preventDefault()
-      console.log(activeRecipe)
       if(!activeRecipe){
-        onAdd({id,name,ingredients,steps,energy,fat,carbs,protein,sodium,time,difficulty})
+        addRecipe({id,name,ingredients,steps,energy,fat,carbs,protein,sodium,time,difficulty})
       } else {
-        onEdit({id,name,ingredients,steps,energy,fat,carbs,protein,sodium,time,difficulty})
+        editRecipe({id,name,ingredients,steps,energy,fat,carbs,protein,sodium,time,difficulty})
       }
+      closeModal()
+    }
+
+    const onDelete=()=>{
+      if(activeRecipe){
+        deleteRecipe(activeRecipe['id'])
+      }
+      closeModal()
+    }
+
+    const closeModal=()=>{
       setShowModal(prev=> !prev)
       setName('')
       setIngredients('')
@@ -42,7 +52,6 @@ const RecipeModal=({showModal, setShowModal,onAdd,onEdit,activeRecipe}) =>{
       setCarbs('0')
       setDifficulty('0')
     }
-
     // Styling for the information fields in the menu (Energy,Time,Fat,Protein,Sodium,Carbs)
     const infoStyling={
       width:"49%",
@@ -63,6 +72,7 @@ const RecipeModal=({showModal, setShowModal,onAdd,onEdit,activeRecipe}) =>{
          setSodium(activeRecipe.sodium)
          setCarbs(activeRecipe.carbohydrates)
          setDifficulty(activeRecipe.difficulty)
+        console.log('updating modal recipes')
       }
     },[activeRecipe])
 
@@ -179,7 +189,8 @@ const RecipeModal=({showModal, setShowModal,onAdd,onEdit,activeRecipe}) =>{
                   </FloatingLabel>
                   </Form.Group>
                   <div style={{float:'right'}}>
-                    <Button style={{marginRight:'10px'}}onClick={()=>setShowModal(prev=> !prev)} variant="secondary">Close</Button>
+                    <Button style={{marginRight:'10px'}}onClick={()=>onDelete()} variant="danger">Delete</Button>
+                    <Button style={{marginRight:'10px'}}onClick={()=>closeModal()} variant="secondary">Close</Button>
                     <Button variant="primary" type='submit'>Save Recipe</Button>
                   </div>
                 </Form>

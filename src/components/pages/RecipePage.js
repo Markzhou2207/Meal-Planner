@@ -6,13 +6,14 @@ import RecipeList from "../RecipeList";
 import PaginationBar from "../PaginationBar";
 function RecipePage() {
     const[showModal, setShowModal] = useState(false)
-    const openModal = () =>{
-        setShowModal(prev=>!prev)
-    }
     const[recipesPerPage] = useState(10)
     const[currentPage, setCurrentPage] = useState(1)
     const[recipes, setRecipes]=useState([])
+    const[refreshRecipes, setRefreshRecipes]=useState(false)
+    const[activeRecipe,setActiveRecipe] = useState('')
     
+    //Addes recipes from json into the recipe list
+    //refreshes with refreshRecipe value changes
     useEffect(()=>{
         const getRecipes = async()=>{
             const recipesFromServer = await fetchRecipes()
@@ -20,7 +21,7 @@ function RecipePage() {
         }
 
         getRecipes()
-    },[recipes])
+    },[refreshRecipes])
 
     // Fetches recipes from JSON
     const fetchRecipes= async()=>{
@@ -39,10 +40,8 @@ function RecipePage() {
     //Change recipes displayed
     const paginate = (pageNumber) => setCurrentPage(pageNumber)
 
-    //
-    const[activeRecipe,setActiveRecipe] = useState('')
 
-    //Adds/Edits Recipe
+    //Adds new recipe to json server
     const addRecipe = async(recipe) =>{
         const res = await fetch('http://localhost:5000/recipes',{
             method:'POST',
@@ -54,27 +53,23 @@ function RecipePage() {
 
         const data = await res.json()
 
-        setRecipes([...recipes,data])
+
+        setRefreshRecipes(prev=>!prev)
 
     }
 
-    //Delete Recipe
+    //Deletes recipe from json server
     const deleteRecipe= async(id)=>{
-        await fetch('http://localhost:5000/recipes/${id}',{
+        await fetch(`http://localhost:5000/recipes/${id}`,{
             method:'DELETE',
         })
+
+        setRefreshRecipes(prev=>!prev)
     }
 
-    //
-    const openRecipeModal = (recipe) =>{
-        setActiveRecipe(recipe)
-        setShowModal(prev=> !prev)
-    }
-    //
+    // PUTS the recipe into the json server
     const editRecipe = async(recipe) =>{
-        const id=recipe['id']
-        console.log(`http://localhost:5000/recipes/${id}`)
-        const res = await fetch(`http://localhost:5000/recipes/${id}`,{
+        const res = await fetch(`http://localhost:5000/recipes/${recipe['id']}`,{
             method:'PUT',
             headers:{
                 'Content-type':'application/json'
@@ -84,16 +79,28 @@ function RecipePage() {
 
         const data = await res.json()
 
-        setRecipes([...recipes,data])
+        setRefreshRecipes(prev=>!prev)
 
+    }
+    // Opens the modal with the recipe information
+    const openRecipeModal = (recipe) =>{
+        if(recipe){
+            setActiveRecipe(recipe)
+        } else {
+            setActiveRecipe('')
+            console.log('no active recipe')
+
+        }
+        setShowModal(prev=> !prev)
     }
     return (
         <>
             <Container>
             <div>
                 <h1 style={{display:'inline-block'}}>Recipes</h1>
-                <Button onClick={openModal} style={{display:'inline-block',float:'right',top:'50%'}} variant='primary'>Create New</Button>{' '}
-                <RecipeModal showModal={showModal} setShowModal={setShowModal} onAdd={addRecipe} onEdit={editRecipe}activeRecipe={activeRecipe}/>
+                <Button onClick={()=>openRecipeModal()} style={{display:'inline-block',float:'right',top:'50%'}} variant='primary'>Create New</Button>{' '}
+                <RecipeModal showModal={showModal} setShowModal={setShowModal} addRecipe={addRecipe} 
+                editRecipe={editRecipe} deleteRecipe={deleteRecipe} activeRecipe={activeRecipe} setActiveRecipe={setActiveRecipe}/>
                 <RecipeList recipes={currentRecipes} openRecipeModal={openRecipeModal}/>
                 <PaginationBar recipesPerPage={recipesPerPage} totalRecipes={recipes.length} paginate={paginate}></PaginationBar>
             </div>
