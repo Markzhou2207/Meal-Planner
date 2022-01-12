@@ -46,7 +46,7 @@ const RecipeModal=({showModal, setShowModal,onAdd,recipe}) =>{
     }
 
     React.useEffect(()=>{
-      if (recipe.name!==undefined) {  
+      if (recipe.name!==undefined) {
          setId(recipe.id)
          setName(recipe.name)
          setIngredients(recipe.ingredients)
@@ -58,9 +58,9 @@ const RecipeModal=({showModal, setShowModal,onAdd,recipe}) =>{
          setSodium(recipe.sodium)
          setCarbs(recipe.carbohydrates)
          setDifficulty(recipe.difficulty)
-        
+
       }
-    },[recipe]) 
+    },[recipe])
 
 
 
@@ -73,7 +73,7 @@ const RecipeModal=({showModal, setShowModal,onAdd,recipe}) =>{
                 <Modal.Header>
                   <Modal.Title>Create New Recipe</Modal.Title>
                 </Modal.Header>
-              
+
                 <Modal.Body>
                 <Form onSubmit={onSubmit}>
                   <Form.Group className="mb-3">
