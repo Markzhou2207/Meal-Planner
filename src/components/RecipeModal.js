@@ -20,7 +20,6 @@ const RecipeModal=({showModal, setShowModal,addRecipe,editRecipe,deleteRecipe,ac
     const[difficulty,setDifficulty]=useState('')
     /*
       Returns the submitted form information to the onAdd method
-      Resets form information after submission.
     */
     const onSubmit=(e)=>{
       e.preventDefault()
@@ -31,14 +30,18 @@ const RecipeModal=({showModal, setShowModal,addRecipe,editRecipe,deleteRecipe,ac
       }
       closeModal()
     }
-
+    /*
+      Calls the deleteRecipe function with the id to delete
+    */
     const onDelete=()=>{
       if(activeRecipe){
         deleteRecipe(activeRecipe['id'])
       }
       closeModal()
     }
-
+    /*
+      Closes the modal and resets all the form data
+    */
     const closeModal=()=>{
       setShowModal(prev=> !prev)
       setName('')
@@ -52,7 +55,9 @@ const RecipeModal=({showModal, setShowModal,addRecipe,editRecipe,deleteRecipe,ac
       setCarbs('0')
       setDifficulty('0')
     }
-    // Styling for the information fields in the menu (Energy,Time,Fat,Protein,Sodium,Carbs)
+    /*
+      Styling for the information fields in the menu (Energy,Time,Fat,Protein,Sodium,Carbs)
+    */
     const infoStyling={
       width:"49%",
       display:"inline-block",
