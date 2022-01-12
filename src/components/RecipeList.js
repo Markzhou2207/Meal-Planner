@@ -1,20 +1,8 @@
 import ListGroup from 'react-bootstrap/ListGroup' 
 import Table from 'react-bootstrap/Table'
-const RecipeList = ({recipes,editRecipe}) => {
+const RecipeList = ({recipes,openRecipeModal}) => {
     return (
         <>
-            {/* <ListGroup>
-                {recipes.map((recipe)=>(
-                    <>
-                          <ListGroup.Item>
-                                <h4>{recipe.name}</h4>
-
-                                
-                          </ListGroup.Item>
-                    </>
-                    
-                ))}
-            </ListGroup> */}
             <Table striped bordered hover>
             <thead>
                 <tr>
@@ -27,7 +15,7 @@ const RecipeList = ({recipes,editRecipe}) => {
             <tbody>
                 {recipes.map((recipe)=>(
                    <tr>
-                       <th onClick={()=>editRecipe(recipe)}>{recipe.name}</th>
+                       <th onClick={()=>openRecipeModal(recipe)}>{recipe.name}</th>
                        <th>{recipe.difficulty}</th>
                        <th>{recipe.time} </th>
                        <th>{recipe.energy} </th>

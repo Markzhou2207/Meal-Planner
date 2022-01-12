@@ -6,7 +6,7 @@ import FloatingLabel from 'react-bootstrap/FloatingLabel'
 import { useState,setState } from 'react'
 import RecipeList from './RecipeList'
 
-const RecipeModal=({showModal, setShowModal,onAdd,recipe}) =>{
+const RecipeModal=({showModal, setShowModal,onAdd,onEdit,activeRecipe}) =>{
     const[id, setId] = useState(0);
     const[name, setName] = useState('');
     const[ingredients,setIngredients]=useState('')
@@ -24,7 +24,12 @@ const RecipeModal=({showModal, setShowModal,onAdd,recipe}) =>{
     */
     const onSubmit=(e)=>{
       e.preventDefault()
-      onAdd({id,name,ingredients,steps,energy,fat,carbs,protein,sodium,time,difficulty})
+      console.log(activeRecipe)
+      if(!activeRecipe){
+        onAdd({id,name,ingredients,steps,energy,fat,carbs,protein,sodium,time,difficulty})
+      } else {
+        onEdit({id,name,ingredients,steps,energy,fat,carbs,protein,sodium,time,difficulty})
+      }
       setShowModal(prev=> !prev)
       setName('')
       setIngredients('')
@@ -46,21 +51,20 @@ const RecipeModal=({showModal, setShowModal,onAdd,recipe}) =>{
     }
 
     React.useEffect(()=>{
-      if (recipe.name!==undefined) {
-         setId(recipe.id)
-         setName(recipe.name)
-         setIngredients(recipe.ingredients)
-         setSteps(recipe.steps)
-         setEnergy(recipe.energy)
-         setTime(recipe.time)
-         setFat(recipe.fat)
-         setProtein(recipe.protein)
-         setSodium(recipe.sodium)
-         setCarbs(recipe.carbohydrates)
-         setDifficulty(recipe.difficulty)
-
+      if (activeRecipe) {
+         setId(activeRecipe.id)
+         setName(activeRecipe.name)
+         setIngredients(activeRecipe.ingredients)
+         setSteps(activeRecipe.steps)
+         setEnergy(activeRecipe.energy)
+         setTime(activeRecipe.time)
+         setFat(activeRecipe.fat)
+         setProtein(activeRecipe.protein)
+         setSodium(activeRecipe.sodium)
+         setCarbs(activeRecipe.carbohydrates)
+         setDifficulty(activeRecipe.difficulty)
       }
-    },[recipe])
+    },[activeRecipe])
 
 
 

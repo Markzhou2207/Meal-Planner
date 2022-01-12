@@ -10,7 +10,7 @@
       "carbohydrates": 41.3,
       "protein": 12,
       "sodium": 1226,
-      "preparationTime": 15,
+      "time": 15,
       "difficulty": "Easy"
     },
     {
@@ -23,7 +23,7 @@
       "carbohydrates": 41.3,
       "protein": 12,
       "sodium": 1226,
-      "preparationTime": 15,
+      "time": 15,
       "difficulty": "Easy"
     },
     {
@@ -36,7 +36,7 @@
       "carbohydrates": 41.3,
       "protein": 12,
       "sodium": 1226,
-      "preparationTime": 15,
+      "time": 15,
       "difficulty": "Easy"
     },
     {
@@ -49,7 +49,7 @@
       "carbohydrates": 41.3,
       "protein": 12,
       "sodium": 1226,
-      "preparationTime": 15,
+      "time": 15,
       "difficulty": "Easy"
     },
     {
@@ -62,7 +62,7 @@
       "carbohydrates": 41.3,
       "protein": 12,
       "sodium": 1226,
-      "preparationTime": 15,
+      "time": 15,
       "difficulty": "Easy"
     },
     {
@@ -75,7 +75,7 @@
       "carbohydrates": 41.3,
       "protein": 12,
       "sodium": 1226,
-      "preparationTime": 15,
+      "time": 15,
       "difficulty": "Easy"
     },
     {
@@ -88,7 +88,7 @@
       "carbohydrates": 41.3,
       "protein": 12,
       "sodium": 1226,
-      "preparationTime": 15,
+      "time": 15,
       "difficulty": "Easy"
     },
     {
@@ -101,47 +101,59 @@
       "carbohydrates": 41.3,
       "protein": 12,
       "sodium": 1226,
-      "preparationTime": 15,
+      "time": 15,
       "difficulty": "Easy"
     },
     {
       "id": 9,
-      "name": "Baked Potato",
+      "name": "Mashed Potatoes",
       "ingredients": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc aliquam lorem in sodales cursus. Vivamus non quam vitae ipsum lacinia volutpat. Cras nec placerat ante. Nullam vitae leo ultrices, auctor sem ut, ullamcorper nunc. Mauris in massa orci. Suspendisse potenti. Vivamus fermentum augue vel eros tempor, vitae pulvinar dolor sagittis.",
       "steps": "1. Boil Chick, 2. Brown Beef",
       "energy": 2899,
       "fat": 28.5,
-      "carbohydrates": 41.3,
+      "carbs": 41.3,
       "protein": 12,
       "sodium": 1226,
-      "preparationTime": 15,
+      "time": 15,
       "difficulty": "Easy"
     },
     {
       "id": 10,
-      "name": "Fried Chicken",
+      "name": "Baked Chicken",
       "ingredients": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc aliquam lorem in sodales cursus. Vivamus non quam vitae ipsum lacinia volutpat. Cras nec placerat ante. Nullam vitae leo ultrices, auctor sem ut, ullamcorper nunc. Mauris in massa orci. Suspendisse potenti. Vivamus fermentum augue vel eros tempor, vitae pulvinar dolor sagittis.",
       "steps": "1. Boil Chick, 2. Brown Beef",
       "energy": 2899,
       "fat": 28.5,
-      "carbohydrates": 41.3,
+      "carbs": 41.3,
       "protein": 12,
       "sodium": 1226,
-      "preparationTime": 15,
+      "time": 15,
       "difficulty": "Easy"
     },
     {
-      "name": "Bacon and Eggs",
+      "id": 11,
+      "name": "Snags and Eggs",
       "ingredients": "Bacon, Eggs",
       "steps": "Cook them",
+      "energy": "0",
+      "fat": "0",
+      "protein": "0",
+      "sodium": "0",
+      "time": "0",
+      "difficulty": "Easy"
+    },
+    {
+      "id": 12,
+      "name": "test",
+      "ingredients": "test",
+      "steps": "test",
       "energy": "0",
       "fat": "0",
       "carbs": "0",
       "protein": "0",
       "sodium": "0",
       "time": "0",
-      "difficulty": "",
-      "id": 11
+      "difficulty": "test"
     }
   ]
 }
