@@ -21,8 +21,8 @@ const DropdownMenu = ({day,meal,recipes,editMeal}) => {
             <tr>
                              <th style={{width:'50%'}}>{days[day]}</th>
                              <th style={{width:'50%'}}>
-                             <Dropdown onChange={(key)=>editMeal(key)}>
-                            <Dropdown.Toggle style={{backgroundColor:'white', color:'black'}}  id="dropdown-basic">
+                            <Dropdown onChange={(key)=>editMeal(key)}>
+                            <Dropdown.Toggle style={{backgroundColor:'white', color:'black',minWidth:"200px"}}  id="dropdown-basic">
                                 {currMeal}
                             </Dropdown.Toggle>
 
