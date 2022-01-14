@@ -18,7 +18,7 @@ function App() {
             <Route path='/recipes' component={RecipePage}/>
           </Routes>
         </Router>
-        <RecipePage></RecipePage>
+        {/* <RecipePage></RecipePage> */}
         <SchedulePage></SchedulePage>
     </div>
   );
