@@ -19,18 +19,14 @@ const DropdownMenu = ({day,meal,recipes,editMeal}) => {
     return (
         <>
             <tr>
-                             <th>{days[day]}</th>
-                             <th>
+                             <th style={{width:'50%'}}>{days[day]}</th>
+                             <th style={{width:'50%'}}>
                              <Dropdown onChange={(key)=>editMeal(key)}>
                             <Dropdown.Toggle style={{backgroundColor:'white', color:'black'}}  id="dropdown-basic">
                                 {currMeal}
                             </Dropdown.Toggle>
 
                             <Dropdown.Menu onChange={(key)=>editMeal(key)}>
-                                {/* {recipes.map((recipe)=>(                               
-                                    <Dropdown.Item href="#/action-1">{recipe.name}</Dropdown.Item>
-                                    
-                                ))}  */}
                                 {Object.entries(recipes).map(([id,name])=>(                               
                                     <Dropdown.Item onClick={()=>changeMeal({id})} key={id}>{name}</Dropdown.Item>
                                     

@@ -1,11 +1,25 @@
 import WeekPanel from '../WeekPanel'
 import Container from 'react-bootstrap/Container'
 import Button from 'react-bootstrap/button'
+import PaginationBar from '../PaginationBar'
 import { useState,useEffect } from 'react'
 const SchedulePage = () => {
     const[mealPlan,setMealPlan]=useState([])
     const[recipes,setRecipes]=useState({})
     const[refresh,setRefresh] = useState(true)
+    const[currentPage, setCurrentPage] = useState(1)
+    const[weeksPerPage] = useState(10)
+
+
+
+    //Variables needed for pagination
+    const indexOfLastRecipe = currentPage * weeksPerPage;
+    const indexOfFirstRecipe = indexOfLastRecipe - weeksPerPage;
+    const currentMeals = mealPlan.slice(indexOfFirstRecipe,indexOfLastRecipe)
+    
+    //Change recipes displayed
+    const paginate = (pageNumber) => setCurrentPage(pageNumber)
+    
     //Addes recipes from json into the recipe list
     //refreshes with refreshRecipe value changes
     useEffect(()=>{
@@ -57,10 +71,12 @@ const SchedulePage = () => {
             <Container>
                 <h1 style={{display:'inline-block'}}>Weekly Meal Plans</h1>
                 <Button style={{display:'inline-block',float:'right',top:'50%'}} onClick={()=>addNewWeek()} variant='primary'>Add New Week</Button>{' '}
-                {Object.entries(mealPlan).map(([id,plan])=>(                               
+                {Object.entries(currentMeals).map(([id,plan])=>(                               
                         console.log(id+"   "+plan.id),
                         <WeekPanel mealPlan={plan} recipes={recipes} setRefresh={setRefresh}/>
                     ))} 
+                <PaginationBar itemsPerPage={weeksPerPage} totalItems={mealPlan.length} paginate={paginate}></PaginationBar>
+
             </Container>
         </div>
     )

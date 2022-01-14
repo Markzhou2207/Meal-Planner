@@ -128,31 +128,6 @@
       "sodium": 1226,
       "time": 15,
       "difficulty": "Easy"
-    },
-    {
-      "id": 11,
-      "name": "Bacon and Eggs",
-      "ingredients": "Bacon, Eggs",
-      "steps": "Cook them",
-      "energy": "1000",
-      "fat": "0",
-      "protein": "0",
-      "sodium": "0",
-      "time": "0",
-      "difficulty": "Easy"
-    },
-    {
-      "id": 12,
-      "name": "test",
-      "ingredients": "test",
-      "steps": "test",
-      "energy": "0",
-      "fat": "0",
-      "carbs": "0",
-      "protein": "0",
-      "sodium": "0",
-      "time": "0",
-      "difficulty": "test"
     }
   ],
   "plans": [
@@ -160,7 +135,7 @@
       "id": 0,
       "startDate": "10-01-2021",
       "meals": [
-        "11",
+        "1",
         "2",
         "3",
         "4",

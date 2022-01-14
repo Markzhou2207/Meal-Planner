@@ -82,8 +82,6 @@ function RecipePage() {
             setActiveRecipe(recipe)
         } else {
             setActiveRecipe('')
-            console.log('no active recipe')
-
         }
         setShowModal(prev=> !prev)
     }
@@ -96,7 +94,7 @@ function RecipePage() {
                 <RecipeModal showModal={showModal} setShowModal={setShowModal} addRecipe={addRecipe} 
                 editRecipe={editRecipe} deleteRecipe={deleteRecipe} activeRecipe={activeRecipe} setActiveRecipe={setActiveRecipe}/>
                 <RecipeList recipes={currentRecipes} openRecipeModal={openRecipeModal}/>
-                <PaginationBar recipesPerPage={recipesPerPage} totalRecipes={recipes.length} paginate={paginate}></PaginationBar>
+                <PaginationBar itemsPerPage={recipesPerPage} totalItems={recipes.length} paginate={paginate}></PaginationBar>
             </div>
             </Container>
         </>
