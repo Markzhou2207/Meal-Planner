@@ -1,6 +1,18 @@
 {
   "recipes": [
     {
+      "id": 1,
+      "name": "Tonkotsu Ramen",
+      "ingredients": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc aliquam lorem in sodales cursus. Vivamus non quam vitae ipsum lacinia volutpat. Cras nec placerat ante. Nullam vitae leo ultrices, auctor sem ut, ullamcorper nunc. Mauris in massa orci. Suspendisse potenti. Vivamus fermentum augue vel eros tempor, vitae pulvinar dolor sagittis.",
+      "steps": "1. Boil Chick, 2. Brown Beef",
+      "energy": "3000",
+      "fat": 28.5,
+      "protein": 12,
+      "sodium": 1226,
+      "time": 15,
+      "difficulty": "Easy"
+    },
+    {
       "id": 2,
       "name": "Beef Curry",
       "ingredients": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc aliquam lorem in sodales cursus. Vivamus non quam vitae ipsum lacinia volutpat. Cras nec placerat ante. Nullam vitae leo ultrices, auctor sem ut, ullamcorper nunc. Mauris in massa orci. Suspendisse potenti. Vivamus fermentum augue vel eros tempor, vitae pulvinar dolor sagittis.",
@@ -116,31 +128,382 @@
       "sodium": 1226,
       "time": 15,
       "difficulty": "Easy"
+    }
+  ],
+  "plans": [
+    {
+      "id": 0,
+      "startDate": "10-01-2021",
+      "meals": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ]
+    },
+    {
+      "id": 1,
+      "startDate": "17-01-2021",
+      "meals": [
+        "5",
+        "2",
+        "3",
+        "4",
+        "9"
+      ]
+    },
+    {
+      "id": 2,
+      "startDate": "24-01-2021",
+      "meals": [
+        "5",
+        "2",
+        "3",
+        "4",
+        "9"
+      ]
+    },
+    {
+      "id": 3,
+      "startDate": "31-01-2021",
+      "meals": [
+        "5",
+        "2",
+        "3",
+        "4",
+        "9"
+      ]
+    },
+    {
+      "id": 4,
+      "startDate": "07-02-2021",
+      "meals": [
+        "5",
+        "2",
+        "3",
+        "4",
+        "9"
+      ]
+    },
+    {
+      "id": 5,
+      "startDate": "14-02-2021",
+      "meals": [
+        "5",
+        "2",
+        "3",
+        "4",
+        "9"
+      ]
+    },
+    {
+      "id": 6,
+      "startDate": "21-02-2021",
+      "meals": [
+        "5",
+        "2",
+        "3",
+        "4",
+        "9"
+      ]
+    },
+    {
+      "id": 7,
+      "startDate": "28-02-2021",
+      "meals": [
+        "5",
+        "2",
+        "3",
+        "4",
+        "9"
+      ]
+    },
+    {
+      "id": 8,
+      "startDate": "07-03-2021",
+      "meals": [
+        "5",
+        "2",
+        "3",
+        "4",
+        "9"
+      ]
+    },
+    {
+      "id": 9,
+      "startDate": "14-03-2021",
+      "meals": [
+        "5",
+        "2",
+        "3",
+        "4",
+        "9"
+      ]
+    },
+    {
+      "id": 10,
+      "startDate": "21-03-2021",
+      "meals": [
+        "5",
+        "2",
+        "3",
+        "4",
+        "9"
+      ]
     },
     {
       "id": 11,
-      "name": "Bacon and Eggs",
-      "ingredients": "Bacon, Eggs",
-      "steps": "Cook them",
-      "energy": "1000",
-      "fat": "0",
-      "protein": "0",
-      "sodium": "0",
-      "time": "0",
-      "difficulty": "Easy"
+      "startDate": "28-03-2021",
+      "meals": [
+        "5",
+        "2",
+        "3",
+        "4",
+        "9"
+      ]
     },
     {
       "id": 12,
-      "name": "test",
-      "ingredients": "test",
-      "steps": "test",
-      "energy": "0",
-      "fat": "0",
-      "carbs": "0",
-      "protein": "0",
-      "sodium": "0",
-      "time": "0",
-      "difficulty": "test"
+      "startDate": "04-04-2021",
+      "meals": [
+        "5",
+        "2",
+        "3",
+        "4",
+        "9"
+      ]
+    },
+    {
+      "id": 13,
+      "startDate": "11-04-2021",
+      "meals": [
+        "5",
+        "2",
+        "3",
+        "4",
+        "9"
+      ]
+    },
+    {
+      "id": 14,
+      "startDate": "18-04-2021",
+      "meals": [
+        "5",
+        "2",
+        "3",
+        "4",
+        "9"
+      ]
+    },
+    {
+      "id": 15,
+      "startDate": "25/04/2021",
+      "meals": [
+        "5",
+        "2",
+        "3",
+        "4",
+        "9"
+      ]
+    },
+    {
+      "id": 16,
+      "startDate": "02/05/2021",
+      "meals": [
+        "5",
+        "2",
+        "3",
+        "4",
+        "9"
+      ]
+    },
+    {
+      "id": 17,
+      "startDate": "09/05/2021",
+      "meals": [
+        "5",
+        "2",
+        "3",
+        "4",
+        "9"
+      ]
+    },
+    {
+      "id": 18,
+      "startDate": "16/05/2021",
+      "meals": [
+        "5",
+        "2",
+        "3",
+        "4",
+        "9"
+      ]
+    },
+    {
+      "id": 19,
+      "startDate": "23/05/2021",
+      "meals": [
+        "5",
+        "2",
+        "3",
+        "4",
+        "9"
+      ]
+    },
+    {
+      "id": 20,
+      "startDate": "30/05/2021",
+      "meals": [
+        "5",
+        "2",
+        "3",
+        "4",
+        "9"
+      ]
+    },
+    {
+      "id": 21,
+      "startDate": "06/06/2021",
+      "meals": [
+        "5",
+        "2",
+        "3",
+        "4",
+        "9"
+      ]
+    },
+    {
+      "id": 22,
+      "startDate": "13/06/2021",
+      "meals": [
+        "5",
+        "2",
+        "3",
+        "4",
+        "9"
+      ]
+    },
+    {
+      "id": 23,
+      "startDate": "20/06/2021",
+      "meals": [
+        "5",
+        "2",
+        "3",
+        "4",
+        "9"
+      ]
+    },
+    {
+      "id": 24,
+      "startDate": "27/06/2021",
+      "meals": [
+        "5",
+        "2",
+        "3",
+        "4",
+        "9"
+      ]
+    },
+    {
+      "id": 25,
+      "startDate": "04/07/2021",
+      "meals": [
+        "5",
+        "2",
+        "3",
+        "4",
+        "9"
+      ]
+    },
+    {
+      "id": 26,
+      "startDate": "11/07/2021",
+      "meals": [
+        "5",
+        "2",
+        "3",
+        "4",
+        "9"
+      ]
+    },
+    {
+      "id": 27,
+      "startDate": "18/07/2021",
+      "meals": [
+        "5",
+        "2",
+        "3",
+        "4",
+        "9"
+      ]
+    },
+    {
+      "id": 28,
+      "startDate": "25/07/2021",
+      "meals": [
+        "5",
+        "2",
+        "3",
+        "4",
+        "9"
+      ]
+    },
+    {
+      "id": 29,
+      "startDate": "01/08/2021",
+      "meals": [
+        "5",
+        "2",
+        "3",
+        "4",
+        "9"
+      ]
+    },
+    {
+      "id": 30,
+      "startDate": "08/08/2021",
+      "meals": [
+        "5",
+        "2",
+        "3",
+        "4",
+        "9"
+      ]
+    },
+    {
+      "id": 31,
+      "startDate": "15/08/2021",
+      "meals": [
+        "5",
+        "2",
+        "3",
+        "4",
+        "9"
+      ]
+    },
+    {
+      "id": 32,
+      "startDate": "22/08/2021",
+      "meals": [
+        "5",
+        "2",
+        "3",
+        "4",
+        "9"
+      ]
+    },
+    {
+      "id": 33,
+      "startDate": "29/08/2021",
+      "meals": [
+        "5",
+        "2",
+        "3",
+        "4",
+        "9"
+      ]
     }
   ]
 }

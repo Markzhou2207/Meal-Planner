@@ -16,19 +16,13 @@ function RecipePage() {
     //refreshes with refreshRecipe value changes
     useEffect(()=>{
         const getRecipes = async()=>{
-            const recipesFromServer = await fetchRecipes()
-            setRecipes(recipesFromServer)
+            const res = await fetch('http://localhost:5000/recipes')
+            const data = await res.json()
+            setRecipes(data)
         }
 
         getRecipes()
     },[refreshRecipes])
-
-    // Fetches recipes from JSON
-    const fetchRecipes= async()=>{
-        const res = await fetch('http://localhost:5000/recipes')
-        const data = await res.json()
-        return data
-    }
 
 
 
@@ -88,8 +82,6 @@ function RecipePage() {
             setActiveRecipe(recipe)
         } else {
             setActiveRecipe('')
-            console.log('no active recipe')
-
         }
         setShowModal(prev=> !prev)
     }
@@ -102,7 +94,7 @@ function RecipePage() {
                 <RecipeModal showModal={showModal} setShowModal={setShowModal} addRecipe={addRecipe} 
                 editRecipe={editRecipe} deleteRecipe={deleteRecipe} activeRecipe={activeRecipe} setActiveRecipe={setActiveRecipe}/>
                 <RecipeList recipes={currentRecipes} openRecipeModal={openRecipeModal}/>
-                <PaginationBar recipesPerPage={recipesPerPage} totalRecipes={recipes.length} paginate={paginate}></PaginationBar>
+                <PaginationBar itemsPerPage={recipesPerPage} totalItems={recipes.length} paginate={paginate}></PaginationBar>
             </div>
             </Container>
         </>

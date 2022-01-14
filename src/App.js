@@ -6,19 +6,21 @@ import {
 } from "react-router-dom";
 import Home from './components/pages/Home.js'
 import RecipePage from './components/pages/RecipePage';
+import SchedulePage from './components/pages/SchedulePage'
 
 function App() {
   return (
+    <Router>
     <div className='App'>
-        <Router>
+        
           <Navigation/>
           <Routes>
-            <Route path='/' component={Home}/>
-            <Route path='/recipes' component={RecipePage}/>
+            <Route exact path='/' element={<SchedulePage/>}/>
+            <Route exact path='/recipes' element={<RecipePage/>}/>
           </Routes>
-        </Router>
-        <RecipePage></RecipePage>
+        {/* <RecipePage></RecipePage> */}
     </div>
+        </Router>
   );
 }
 

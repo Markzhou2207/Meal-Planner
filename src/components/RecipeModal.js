@@ -3,8 +3,7 @@ import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 import FloatingLabel from 'react-bootstrap/FloatingLabel'
-import { useState,setState } from 'react'
-import RecipeList from './RecipeList'
+import { useState } from 'react'
 
 const RecipeModal=({showModal, setShowModal,addRecipe,editRecipe,deleteRecipe,activeRecipe,setActiveRecipe}) =>{
     const[id, setId] = useState(0);
