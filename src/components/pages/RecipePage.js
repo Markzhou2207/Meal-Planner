@@ -1,9 +1,10 @@
-import Container from "react-bootstrap/esm/Container";
+import Container from "react-bootstrap/Container";
 import Button from 'react-bootstrap/Button';
 import RecipeModal from "../RecipeModal";
 import {useState, useEffect} from 'react';
 import RecipeList from "../RecipeList";
 import PaginationBar from "../PaginationBar";
+
 function RecipePage() {
     const[showModal, setShowModal] = useState(false)
     const[recipesPerPage] = useState(10)
