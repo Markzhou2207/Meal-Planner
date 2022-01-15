@@ -71,9 +71,8 @@ const SchedulePage = () => {
             <Container>
                 <h1 style={{display:'inline-block'}}>Weekly Meal Plans</h1>
                 <Button style={{display:'inline-block',float:'right',top:'50%'}} onClick={()=>addNewWeek()} variant='primary'>Add New Week</Button>{' '}
-                {Object.entries(currentMeals).map(([id,plan])=>(                               
-                        console.log(id+"   "+plan.id),
-                        <WeekPanel mealPlan={plan} recipes={recipes} setRefresh={setRefresh}/>
+                {Object.entries(currentMeals).map(([id,plan])=>(     
+                        <WeekPanel key={id} mealPlan={plan} recipes={recipes} setRefresh={setRefresh}/>
                     ))} 
                 <PaginationBar itemsPerPage={weeksPerPage} totalItems={mealPlan.length} paginate={paginate}></PaginationBar>
 

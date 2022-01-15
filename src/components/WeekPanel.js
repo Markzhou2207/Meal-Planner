@@ -41,10 +41,10 @@ const WeekPanel = ({mealPlan,recipes,setRefresh}) => {
 
 
     return (
-        <div>
+        <>
             {mealPlan ? (
-             <Accordion defaultActiveKey="0">
-             <Accordion.Item eventKey="0">
+             <Accordion role='weekPanel' key={mealPlan.startDate}>
+             <Accordion.Item>
                  <Accordion.Header>Week: {mealPlan.startDate}</Accordion.Header>
                  <Accordion.Body>
                  <Table striped bordered hover>
@@ -56,7 +56,7 @@ const WeekPanel = ({mealPlan,recipes,setRefresh}) => {
                      </thead>
                      <tbody>
                         {Object.entries(meals).map(([id,name])=>(                               
-                            <WeekRow day={id} meal={name} recipes={recipes} editMeal={editMeal}/>
+                            <WeekRow key={id} day={id} meal={name} recipes={recipes} editMeal={editMeal}/>
                                 ))} 
                      </tbody>
                 
@@ -65,7 +65,7 @@ const WeekPanel = ({mealPlan,recipes,setRefresh}) => {
              </Accordion.Item>
              </Accordion>
             ):null}
-        </div>
+        </>
     )
 }
 

@@ -11,7 +11,7 @@ import SchedulePage from './components/pages/SchedulePage'
 function App() {
   return (
     <Router>
-    <div className='App'>
+    <div>
         
           <Navigation/>
           <Routes>

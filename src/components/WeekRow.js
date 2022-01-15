@@ -1,7 +1,7 @@
 import { useState,useEffect } from 'react'
 import Dropdown from 'react-bootstrap/Dropdown'
 
-const DropdownMenu = ({day,meal,recipes,editMeal}) => {
+const WeekRow = ({day,meal,recipes,editMeal}) => {
     const [days] = useState(['Monday','Tuesday','Wednesday','Thursday','Friday'])
     const [currMeal,setCurrMeal] = useState('')
     const changeMeal=async(meal) =>{
@@ -18,21 +18,21 @@ const DropdownMenu = ({day,meal,recipes,editMeal}) => {
     },[meal])
     return (
         <>
-            <tr>
-                             <th style={{width:'50%'}}>{days[day]}</th>
-                             <th style={{width:'50%'}}>
-                            <Dropdown onChange={(key)=>editMeal(key)}>
-                            <Dropdown.Toggle style={{backgroundColor:'white', color:'black',minWidth:"200px"}}  id="dropdown-basic">
+            <tr role="dayRow">
+                             <th role="day" style={{width:'50%'}}>{days[day]}</th>
+                             <th role="meal" style={{width:'50%'}}>
+                            <Dropdown>
+                            <Dropdown.Toggle style={{backgroundColor:'white', color:'black',minWidth:"200px"}} >
                                 {currMeal}
                             </Dropdown.Toggle>
 
-                            <Dropdown.Menu onChange={(key)=>editMeal(key)}>
+                            <Dropdown.Menu role='dropdownMenu'>
                                 {Object.entries(recipes).map(([id,name])=>(                               
-                                    <Dropdown.Item onClick={()=>changeMeal({id})} key={id}>{name}</Dropdown.Item>
+                                    <Dropdown.Item onClick={()=>changeMeal({id})} key={id} role='dropdownOption'>{name}</Dropdown.Item>
                                     
                                 ))} 
                                 <Dropdown.Divider />
-                                <Dropdown.Item style={{color:'red'}} onClick={()=>changeMeal('')}>Remove</Dropdown.Item>
+                                <Dropdown.Item style={{color:'red'}} onClick={()=>changeMeal('')} key={0} role='dropdownOption'>Remove</Dropdown.Item>
 
                             </Dropdown.Menu>
 
@@ -44,4 +44,4 @@ const DropdownMenu = ({day,meal,recipes,editMeal}) => {
     )
 }
 
-export default DropdownMenu
+export default WeekRow

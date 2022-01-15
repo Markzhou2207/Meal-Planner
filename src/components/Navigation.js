@@ -11,7 +11,7 @@ const Navigation = ({title}) => {
     return (
           <Navbar expand="lg">
             <Container>
-              <Navbar.Brand href="#home">MEAL <i class="fas fa-utensils"/></Navbar.Brand>
+              <Navbar.Brand href="#home">MEAL <i className="fas fa-utensils"/></Navbar.Brand>
               <Nav className='myNavBar'>
                 <NavLink id="navLink" to='/'className="nav-link active">Schedule</NavLink>
                 <NavLink id="navLink" to="/recipes" className="nav-link active"> Meals</NavLink>

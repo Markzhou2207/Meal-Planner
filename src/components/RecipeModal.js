@@ -87,7 +87,7 @@ const RecipeModal=({showModal, setShowModal,addRecipe,editRecipe,deleteRecipe,ac
     return (
         <>
             {showModal ? (
-                <Modal.Dialog>
+                <Modal.Dialog data-testid='recipeModal'>
                 <Modal.Header>
                   <Modal.Title>Create New Recipe</Modal.Title>
                 </Modal.Header>
