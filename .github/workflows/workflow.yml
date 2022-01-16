@@ -16,24 +16,21 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [12.x, 14.x, 16.x]
+        node-version: [16.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2
-    
-    - name: Install 
-      uses: npm install
+      - name: Checkout 🛎️
+        uses: actions/checkout@v2
 
-    - name: Build
-      uses: npm run build
+      - name: Install ,Build and Test 🔧 # This example project is built using npm and outputs the result to the 'build' folder. Replace with the commands required to build your project, or remove this step entirely if your site is pre-built.
+        run: |
+          npm ci
+          npm run build
+          npm test
 
-    - name: Test
-      uses: npm test
-
-    - name: Deploy 
-      uses: JamesIves/github-pages-deploy-action@v4.2.2
-      with:
-        branch: gh-pages # The branch the action should deploy to.
-        folder: build # The folder the action should deploy.
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@v4.2.2
+        with:
+          branch: gh-pages # The branch the action should deploy to.
+          folder: build # The folder the action should deploy.
