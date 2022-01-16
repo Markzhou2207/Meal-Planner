@@ -2,35 +2,33 @@ import Accordion from 'react-bootstrap/Accordion'
 import Table from 'react-bootstrap/Table'
 import WeekRow from './WeekRow'
 import { useEffect,useState } from 'react'
-const WeekPanel = ({mealPlan,recipes,setRefresh}) => {
-    const [mondayMeal, setMondayMeal] = useState('')
+const WeekPanel = ({menu,recipes,setRefresh}) => {
 
     const [meals,setMeals] = useState(['','','','',''])
-    let mealArray=['','','','','']
+
     useEffect(()=>{
         const mapMealName = async()=>{
             var arr=['','','','','']
-            if(recipes && mealPlan){
+            if(recipes && menu){
                 for(let i=0;i<5;i++){
-                    arr[i]=recipes[mealPlan.meals[i]]
-                    mealArray[i]=recipes[mealPlan.meals[i]]
+                    arr[i]=recipes[menu.meals[i]]
                 }
             }
             setMeals(arr)
         }
         mapMealName()
-    },[recipes,mealPlan])
+    },[recipes,menu])
 
 
     
     const editMeal = async(day,meal) =>{
-        mealPlan.meals[day]=meal.id
-        const res = await fetch(`http://localhost:5000/plans/${mealPlan.id}`,{
+        menu.meals[day]=meal.id
+        await fetch(`http://localhost:5000/plans/${menu.id}`,{
             method:'PUT',
             headers:{
                 'Content-type':'application/json'
             },
-            body: JSON.stringify(mealPlan)
+            body: JSON.stringify(menu)
         })
         setRefresh(prev=>!prev)
 
@@ -41,11 +39,11 @@ const WeekPanel = ({mealPlan,recipes,setRefresh}) => {
 
 
     return (
-        <div>
-            {mealPlan ? (
-             <Accordion defaultActiveKey="0">
-             <Accordion.Item eventKey="0">
-                 <Accordion.Header>Week: {mealPlan.startDate}</Accordion.Header>
+        <>
+            {menu ? (
+             <Accordion role='weekPanel' key={menu.startDate}>
+             <Accordion.Item>
+                 <Accordion.Header>Week: {menu.startDate}</Accordion.Header>
                  <Accordion.Body>
                  <Table striped bordered hover>
                      <thead>
@@ -56,7 +54,7 @@ const WeekPanel = ({mealPlan,recipes,setRefresh}) => {
                      </thead>
                      <tbody>
                         {Object.entries(meals).map(([id,name])=>(                               
-                            <WeekRow day={id} meal={name} recipes={recipes} editMeal={editMeal}/>
+                            <WeekRow key={id} day={id} meal={name} recipes={recipes} editMeal={editMeal}/>
                                 ))} 
                      </tbody>
                 
@@ -65,7 +63,7 @@ const WeekPanel = ({mealPlan,recipes,setRefresh}) => {
              </Accordion.Item>
              </Accordion>
             ):null}
-        </div>
+        </>
     )
 }
 

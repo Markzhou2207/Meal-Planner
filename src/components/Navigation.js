@@ -4,7 +4,7 @@ import Container from 'react-bootstrap/Container'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './Navigation.css'
 
-// import NavLink from 'react-bootstrap/esm/NavLink'
+//Navigation Component
 import {NavLink} from 'react-router-dom'
 const Navigation = ({setLoggedIn}) => {
   const handleLogout = () => {
@@ -14,9 +14,9 @@ const Navigation = ({setLoggedIn}) => {
     return (
           <Navbar expand="lg">
             <Container>
-              <Navbar.Brand href="#home">MEAL <i class="fas fa-utensils"/></Navbar.Brand>
+              <Navbar.Brand href="#home">MEAL <i className="fas fa-utensils"/></Navbar.Brand>
               <Nav className='myNavBar'>
-                <NavLink id="navLink" to='/'className="nav-link active">Schedule</NavLink>
+                <NavLink id="navLink" to='/'className="nav-link active">Menus</NavLink>
                 <NavLink id="navLink" to="/recipes" className="nav-link active"> Meals</NavLink>
                 <NavLink id="logoutLink"to="/" className="nav-link active" onClick={()=>handleLogout()}> Logout</NavLink>
               </Nav>

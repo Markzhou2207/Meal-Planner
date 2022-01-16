@@ -15,10 +15,10 @@ const RecipeList = ({recipes,openRecipeModal}) => {
             <tbody>
                 {recipes.map((recipe)=>(
                    <tr>
-                       <th onClick={()=>openRecipeModal(recipe)}>{recipe.name}</th>
-                       <th>{recipe.difficulty}</th>
-                       <th>{recipe.time} </th>
-                       <th>{recipe.energy} </th>
+                       <th onClick={()=>openRecipeModal(recipe)} style={{width:'40%'}}>{recipe.name}</th>
+                       <th style={{width:'20%'}}>{recipe.difficulty}</th>
+                       <th style={{width:'20%'}}>{recipe.time} </th>
+                       <th style={{width:'20%'}}>{recipe.energy} </th>
                    </tr>
                     
                 ))} 
