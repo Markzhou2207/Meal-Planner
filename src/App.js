@@ -26,10 +26,9 @@ function App() {
       <div className='App'>
           <Navigation setLoggedI={setLoggedIn}/>
           <Routes>
-            <Route exact path='/' element={<SchedulePage/>}/>
+            <Route exact path='/' element={<MenuPage/>}/>
             <Route exact path='/recipes' element={<RecipePage/>}/>
           </Routes>
-        {/* <RecipePage></RecipePage> */}
       </div>
     </Router>:
   <div><LoginPage setLoggedIn={setLoggedIn}/></div>
