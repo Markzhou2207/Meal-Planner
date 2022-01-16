@@ -2,7 +2,7 @@ import {render,screen,cleanup,getByRole} from '@testing-library/react';
 import { act } from '@testing-library/react';
 import RecipeModal from '../RecipeModal'
 import WeekPanel from '../WeekPanel';
-import SchedulePage from '../pages/SchedulePage'
+import SchedulePage from '../pages/MenuPage'
 import WeekRow from '../WeekRow'
 test('week panel should render',()=>{
     const mealPlan={

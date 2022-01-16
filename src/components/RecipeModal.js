@@ -5,7 +5,7 @@ import Form from 'react-bootstrap/Form'
 import FloatingLabel from 'react-bootstrap/FloatingLabel'
 import { useState } from 'react'
 
-const RecipeModal=({showModal, setShowModal,addRecipe,editRecipe,deleteRecipe,activeRecipe,setActiveRecipe}) =>{
+const RecipeModal=({showModal, setShowModal,addRecipe,editRecipe,deleteRecipe,activeRecipe}) =>{
     const[id, setId] = useState(0);
     const[name, setName] = useState('');
     const[ingredients,setIngredients]=useState('')
@@ -17,6 +17,18 @@ const RecipeModal=({showModal, setShowModal,addRecipe,editRecipe,deleteRecipe,ac
     const[sodium,setSodium]=useState('0')
     const[carbs,setCarbs]=useState('0')
     const[difficulty,setDifficulty]=useState('')
+
+    
+    /*
+      Styling for the information fields in the menu (Energy,Time,Fat,Protein,Sodium,Carbs)
+    */
+      const infoStyling={
+        width:"49%",
+        display:"inline-block",
+        margin:"1px"
+      }
+
+
     /*
       Returns the submitted form information to the onAdd method
     */
@@ -29,15 +41,19 @@ const RecipeModal=({showModal, setShowModal,addRecipe,editRecipe,deleteRecipe,ac
       }
       closeModal()
     }
+
+
     /*
       Calls the deleteRecipe function with the id to delete
     */
-    const onDelete=()=>{
+    const deleteExistingRecipe=()=>{
       if(activeRecipe){
         deleteRecipe(activeRecipe['id'])
       }
       closeModal()
     }
+
+
     /*
       Closes the modal and resets all the form data
     */
@@ -54,30 +70,26 @@ const RecipeModal=({showModal, setShowModal,addRecipe,editRecipe,deleteRecipe,ac
       setCarbs('0')
       setDifficulty('0')
     }
-    /*
-      Styling for the information fields in the menu (Energy,Time,Fat,Protein,Sodium,Carbs)
-    */
-    const infoStyling={
-      width:"49%",
-      display:"inline-block",
-      margin:"1px"
-    }
-
+    // Updates form with the information of the existing recipe
     React.useEffect(()=>{
-      if (activeRecipe) {
-         setId(activeRecipe.id)
-         setName(activeRecipe.name)
-         setIngredients(activeRecipe.ingredients)
-         setSteps(activeRecipe.steps)
-         setEnergy(activeRecipe.energy)
-         setTime(activeRecipe.time)
-         setFat(activeRecipe.fat)
-         setProtein(activeRecipe.protein)
-         setSodium(activeRecipe.sodium)
-         setCarbs(activeRecipe.carbohydrates)
-         setDifficulty(activeRecipe.difficulty)
-        console.log('updating modal recipes')
+      const populateExistingRecipe=()=>{
+        if (activeRecipe) {
+          setId(activeRecipe.id)
+          setName(activeRecipe.name)
+          setIngredients(activeRecipe.ingredients)
+          setSteps(activeRecipe.steps)
+          setEnergy(activeRecipe.energy)
+          setTime(activeRecipe.time)
+          setFat(activeRecipe.fat)
+          setProtein(activeRecipe.protein)
+          setSodium(activeRecipe.sodium)
+          setCarbs(activeRecipe.carbohydrates)
+          setDifficulty(activeRecipe.difficulty)
+         console.log('updating modal recipes')
+       }
       }
+
+      populateExistingRecipe()
     },[activeRecipe])
 
 
@@ -193,7 +205,7 @@ const RecipeModal=({showModal, setShowModal,addRecipe,editRecipe,deleteRecipe,ac
                   </FloatingLabel>
                   </Form.Group>
                   <div style={{float:'right'}}>
-                    <Button style={{marginRight:'10px'}}onClick={()=>onDelete()} variant="danger">Delete</Button>
+                    <Button style={{marginRight:'10px'}}onClick={()=>deleteExistingRecipe()} variant="danger">Delete</Button>
                     <Button style={{marginRight:'10px'}}onClick={()=>closeModal()} variant="secondary">Close</Button>
                     <Button variant="primary" type='submit'>Save Recipe</Button>
                   </div>

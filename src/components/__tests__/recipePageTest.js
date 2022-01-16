@@ -1,5 +1,4 @@
 import {render,screen,cleanup, getByTestId, fireEvent} from '@testing-library/react';
-import RecipeModal from '../RecipeModal'
 import RecipePage from '../pages/RecipePage';
 test('week panel should render',()=>{
     render(<RecipePage/>)

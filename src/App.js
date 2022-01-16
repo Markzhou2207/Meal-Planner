@@ -4,23 +4,20 @@ import {
   Route,
   Routes,
 } from "react-router-dom";
-import Home from './components/pages/Home.js'
 import RecipePage from './components/pages/RecipePage';
-import SchedulePage from './components/pages/SchedulePage'
+import MenuPage from './components/pages/MenuPage'
 
 function App() {
   return (
     <Router>
-    <div>
-        
-          <Navigation/>
-          <Routes>
-            <Route exact path='/' element={<SchedulePage/>}/>
-            <Route exact path='/recipes' element={<RecipePage/>}/>
-          </Routes>
-        {/* <RecipePage></RecipePage> */}
-    </div>
-        </Router>
+    <div>      
+      <Navigation/>
+        <Routes>
+          <Route exact path='/' element={<MenuPage/>}/>
+          <Route exact path='/recipes' element={<RecipePage/>}/>
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
