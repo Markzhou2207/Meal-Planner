@@ -4,3 +4,11 @@
     color: #067A46;
     background: #E4FABF;
 }
+#logoutLink:hover{
+    font-weight: 600;
+    color: black;
+    background: #e20e0e;
+}
+#logoutLink{
+    color: black;
+}
