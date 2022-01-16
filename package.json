@@ -1,5 +1,6 @@
 {
   "name": "meal-planner",
+  "homepage":"https://markzhou2207.github.io/Meal-Planner",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -16,6 +17,8 @@
     "web-vitals": "^2.1.3"
   },
   "scripts": {
+    "predeploy":"npm run build",
+    "deploy":"gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -45,5 +48,6 @@
     "@wojtekmaj/enzyme-adapter-react-17": "^0.6.6",
     "enzyme": "^3.11.0",
     "jest": "^27.4.7"
+    "gh-pages": "^3.2.3"
   }
 }
