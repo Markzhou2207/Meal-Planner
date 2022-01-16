@@ -27,6 +27,7 @@ jobs:
         run: |
           npm ci
           npm run build
+          npm run server
           npm test
 
       - name: Deploy 🚀
