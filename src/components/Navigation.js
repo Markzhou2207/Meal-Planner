@@ -4,9 +4,13 @@ import Container from 'react-bootstrap/Container'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './Navigation.css'
 
-//Navigation Component 
+//Navigation Component
 import {NavLink} from 'react-router-dom'
-const Navigation = ({title}) => {
+const Navigation = ({setLoggedIn}) => {
+  const handleLogout = () => {
+    localStorage.clear()
+    setLoggedIn(false);
+  };
     return (
           <Navbar expand="lg">
             <Container>
@@ -14,6 +18,7 @@ const Navigation = ({title}) => {
               <Nav className='myNavBar'>
                 <NavLink id="navLink" to='/'className="nav-link active">Menus</NavLink>
                 <NavLink id="navLink" to="/recipes" className="nav-link active"> Meals</NavLink>
+                <NavLink id="logoutLink"to="/" className="nav-link active" onClick={()=>handleLogout()}> Logout</NavLink>
               </Nav>
             </Container>
           </Navbar>
